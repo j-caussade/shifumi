@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<link rel="stylesheet" href="style.css" />
+		<script src="./js/main.js" defer></script>
+		<title>Shifumi</title>
+	</head>
+	<body>
+		<main>
+			<div id="start_game">
+				<h1 id="main_title">Shifumi</h1>
+				<h2>Choose a kind of party:</h2>
+				<div id="kind_party">
+					<button id="player_computer">
+						Player vs Computer
+					</button>
+					<button id="computer_computer">
+						Computer vs Computer
+					</button>
+				</div>
+			</div>
+			<div id="end_game">
+				<h1 id="party_message"></h1>
+				<button id="re_start">Play again ?</button>
+			</div>
+			<div id="playground">
+				<div class="player">
+					<div>
+						<h1 id="kind_player"></h1>
+						<p>Score : <span id="score_player">0</span></p>
+					</div>
+					<div class="display" id="left"></div>
+				</div>
+				<div class="player">
+					<div>
+						<h1>Computer</h1>
+						<p>Score : <span id="score_computer">0</span></p>
+					</div>
+					<div class="display" id="right"></div>
+				</div>
+			</div>
+			<div id="panel_control">
+				<h2>Choose your move :</h2>
+				<div id="panel_buttons">
+					<div class="moves_buttons">
+						<img
+							src="img/papper.png"
+							alt="Papper"
+							class="moves"
+							id="papper"
+						/>
+					</div>
+					<div class="moves_buttons">
+						<img
+							src="img/rock.png"
+							alt="Rock"
+							class="moves"
+							id="rock"
+						/>
+					</div>
+					<div class="moves_buttons">
+						<img
+							src="img/scissors.png"
+							alt="Scissors"
+							class="moves"
+							id="scissors"
+						/>
+					</div>
+				</div>
+			</div>
+		</main>
+	</body>
+</html>
