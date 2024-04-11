@@ -14,38 +14,38 @@
 		<main>
 			<div id="start_game">
 				<h1 id="main_title">Shifumi</h1>
-				<h2>Choose a kind of party:</h2>
+				<h2>Choose a type of game:</h2>
 				<div id="kind_party">
 					<button id="player_computer">
 						Player vs Computer
 					</button>
 					<button id="computer_computer">
-						Computer vs Computer
+						Automatic vs Computer
 					</button>
 				</div>
 			</div>
 			<div id="end_game">
 				<h1 id="party_message"></h1>
-				<button id="re_start">Play again ?</button>
+				<button id="re_start">Play again?</button>
 			</div>
 			<div id="playground">
 				<div class="player">
 					<div>
 						<h1 id="kind_player"></h1>
-						<p>Score : <span id="score_player">0</span></p>
+						<p>Score: <span id="score_player">0</span></p>
 					</div>
 					<div class="display" id="left"></div>
 				</div>
 				<div class="player">
 					<div>
 						<h1>Computer</h1>
-						<p>Score : <span id="score_computer">0</span></p>
+						<p>Score: <span id="score_computer">0</span></p>
 					</div>
 					<div class="display" id="right"></div>
 				</div>
 			</div>
 			<div id="panel_control">
-				<h2>Choose your move :</h2>
+				<h2 id="control_panel_headline"></h2>
 				<div id="panel_buttons">
 					<div class="moves_buttons">
 						<img
@@ -71,6 +71,9 @@
 							id="scissors"
 						/>
 					</div>
+				</div>
+				<div>
+					<button id="play">Play</button>
 				</div>
 			</div>
 		</main>
