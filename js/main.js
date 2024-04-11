@@ -96,7 +96,7 @@ function playParty() {
 
 		reStart.addEventListener("click", reset);
 
-		// RESET:
+		// Reset:
 		function reset() {
 			scorePlayer = 0;
 			scoreComputer = 0;
@@ -118,173 +118,94 @@ function watchParty() {
 	playButton.style.display = "flex";
 	controlPanelHeadline.textContent = "Play a round:";
 
-	// playButton.addEventListener("click", roundPlayer());
-	// function roundPlayer() {}
+	let autoplay = false;
 
-	while (scorePlayer < 10 && scoreComputer < 10) {
-		// Automatic player
-		function automaticPlayer() {
-			const movesComputer = ["papper", "rock", "scissors"];
-			const randomMove = Math.floor(
-				Math.random() * movesComputer.length
-			);
-			return movesComputer[randomMove];
-		}
-		movePlayer = automaticPlayer();
-
-		displayPlayer.innerHTML = "";
-
-		const move = document.createElement("img");
-		move.setAttribute("id", movePlayer);
-		move.src = `./img/${movePlayer}.png`;
-		displayPlayer.appendChild(move);
-
-		// Computer:
-		function automaticComputer() {
-			const movesComputer = ["papper", "rock", "scissors"];
-			const randomMove = Math.floor(
-				Math.random() * movesComputer.length
-			);
-			return movesComputer[randomMove];
-		}
-		automaticMoveComputer = automaticComputer();
-
-		displayComputer.innerHTML = "";
-
-		const moveComputer = document.createElement("img");
-		moveComputer.setAttribute("id", automaticMoveComputer);
-		moveComputer.src = `./img/${automaticMoveComputer}.png`;
-		moveComputer.style.transform = "rotateY(180deg)";
-		displayComputer.appendChild(moveComputer);
-
-		// Victory:
-		if (movePlayer == automaticComputer()) {
-			scorePlayer += 0;
-			scoreComputer += 0;
-			// return;
-		} else if (
-			(movePlayer == "papper") & (automaticMoveComputer == "rock") ||
-			(movePlayer == "rock") & (automaticMoveComputer == "scissors") ||
-			(movePlayer == "scissors") & (automaticMoveComputer == "papper")
-		) {
-			scorePlayer++;
-		} else {
-			scoreComputer++;
-		}
-
-		displayScorePlayer.textContent = scorePlayer;
-		displayscoreComputer.textContent = scoreComputer;
+	playButton.addEventListener("click", startAutoplay());
+	function startAutoplay() {
+		autoplay = true;
 	}
 
-	if (scorePlayer == 10) {
-		endGame.style.display = "flex";
-		partyMessage.textContent = "Victory !";
-	}
+	console.log(autoplay);
 
-	if (scoreComputer == 10) {
-		endGame.style.display = "flex";
-		partyMessage.textContent = "Defeat !";
-	}
+	if (autoplay == true) {
+		autoplay = false;
+		while (scorePlayer < 10 && scoreComputer < 10) {
+			// Automatic player:
+			function automaticPlayer() {
+				const movesComputer = ["papper", "rock", "scissors"];
+				const randomMove = Math.floor(
+					Math.random() * movesComputer.length
+				);
+				return movesComputer[randomMove];
+			}
+			movePlayer = automaticPlayer();
 
-	reStart.addEventListener("click", reset);
+			displayPlayer.innerHTML = "";
 
-	// Reset:
-	function reset() {
-		scorePlayer = 0;
-		scoreComputer = 0;
-		displayScorePlayer.textContent = scorePlayer;
-		displayscoreComputer.textContent = scoreComputer;
-		displayPlayer.innerHTML = "";
-		displayComputer.innerHTML = "";
-		endGame.style.display = "none";
-		startGame.style.display = "flex";
+			const move = document.createElement("img");
+			move.setAttribute("id", movePlayer);
+			move.src = `./img/${movePlayer}.png`;
+			displayPlayer.appendChild(move);
+
+			// Computer:
+			function automaticComputer() {
+				const movesComputer = ["papper", "rock", "scissors"];
+				const randomMove = Math.floor(
+					Math.random() * movesComputer.length
+				);
+				return movesComputer[randomMove];
+			}
+			automaticMoveComputer = automaticComputer();
+
+			displayComputer.innerHTML = "";
+
+			const moveComputer = document.createElement("img");
+			moveComputer.setAttribute("id", automaticMoveComputer);
+			moveComputer.src = `./img/${automaticMoveComputer}.png`;
+			moveComputer.style.transform = "rotateY(180deg)";
+			displayComputer.appendChild(moveComputer);
+
+			// Victory:
+			if (movePlayer == automaticComputer()) {
+			} else if (
+				(movePlayer == "papper") &
+					(automaticMoveComputer == "rock") ||
+				(movePlayer == "rock") &
+					(automaticMoveComputer == "scissors") ||
+				(movePlayer == "scissors") &
+					(automaticMoveComputer == "papper")
+			) {
+				scorePlayer++;
+			} else {
+				scoreComputer++;
+			}
+
+			displayScorePlayer.textContent = scorePlayer;
+			displayscoreComputer.textContent = scoreComputer;
+		}
+
+		if (scorePlayer == 10) {
+			endGame.style.display = "flex";
+			partyMessage.textContent = "Victory !";
+		}
+
+		if (scoreComputer == 10) {
+			endGame.style.display = "flex";
+			partyMessage.textContent = "Defeat !";
+		}
+
+		reStart.addEventListener("click", reset);
+
+		// Reset:
+		function reset() {
+			scorePlayer = 0;
+			scoreComputer = 0;
+			displayScorePlayer.textContent = scorePlayer;
+			displayscoreComputer.textContent = scoreComputer;
+			displayPlayer.innerHTML = "";
+			displayComputer.innerHTML = "";
+			endGame.style.display = "none";
+			startGame.style.display = "flex";
+		}
 	}
 }
-
-// function party() {
-// 	// Fonction COMPUTER:
-// 	function playingComputer() {
-// 		const movesComputer = ["papper", "rock", "scissors"];
-// 		const randomMove = Math.floor(Math.random() * movesComputer.length);
-// 		return movesComputer[randomMove];
-// 	}
-
-// 	// PLAYER:
-// 	// condition
-// 	function player() {
-// 		const movePlayer = null;
-// 		if (playerVsComputer == true) {
-// 			for (let i = 0; i < moves.length; i++) {
-// 				moves[i].addEventListener("click", selectedMoves);
-// 			}
-// 			function selectedMoves(event) {
-// 				movePlayer = event.target.id;
-// 			}
-// 		} else {
-// 			movePlayer = playingComputer(movesComputer[randomMove]);
-// 		}
-
-// 		displayPlayer.innerHTML = "";
-
-// 		const move = document.createElement("img");
-// 		move.setAttribute("id", movePlayer);
-// 		move.src = `./img/${movePlayer}.png`;
-// 		displayPlayer.appendChild(move);
-// 	}
-
-// 	// Affichage coup ordinateur
-// 	function displayMoveComputer() {
-// 		displayComputer.innerHTML = "";
-
-// 		const moveComputer = document.createElement("img");
-// 		moveComputer.setAttribute("id", playingComputer());
-// 		moveComputer.src = `./img/${playingComputer()}.png`;
-// 		moveComputer.style.transform = "rotateY(180deg)";
-// 		displayComputer.appendChild(moveComputer);
-// 	}
-
-// 	// VICTORY:
-// 	function victory() {
-// 		if (movePlayer == movesComputer[randomMove]) {
-// 			return;
-// 		} else if (
-// 			(movePlayer == "papper") &
-// 				(movesComputer[randomMove] == "rock") ||
-// 			(movePlayer == "rock") &
-// 				(movesComputer[randomMove] == "scissors") ||
-// 			(movePlayer == "scissors") &
-// 				(movesComputer[randomMove] == "papper")
-// 		) {
-// 			scorePlayer++;
-// 		} else {
-// 			scoreComputer++;
-// 		}
-
-// 		displayScorePlayer.textContent = scorePlayer;
-// 		displayscoreComputer.textContent = scoreComputer;
-
-// 		if (scorePlayer == 10) {
-// 			endGame.style.display = "flex";
-// 			partyMessage.textContent = "Victory !";
-// 		}
-
-// 		if (scoreComputer == 10) {
-// 			endGame.style.display = "flex";
-// 			partyMessage.textContent = "Defeat !";
-// 		}
-
-// 		reStart.addEventListener("click", reset);
-
-// 		// RESET:
-// 		function reset() {
-// 			scorePlayer = 0;
-// 			scoreComputer = 0;
-// 			displayScorePlayer.textContent = scorePlayer;
-// 			displayscoreComputer.textContent = scoreComputer;
-// 			displayPlayer.innerHTML = "";
-// 			displayComputer.innerHTML = "";
-// 			endGame.style.display = "none";
-// 			startGame.style.display = "flex";
-// 		}
-// 	}
-// }
